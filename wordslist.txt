@@ -18,3 +18,5 @@ mountain
 desert
 forest
 ocean
+Donkey
+Cow
