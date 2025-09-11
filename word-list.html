@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Word List</title>
+  <style>
+    body{font-family:Arial,sans-serif;background:#f9fafb;margin:0;padding:20px;display:flex;flex-direction:column;align-items:center}
+    h1{color:#4CAF50}
+    ul{list-style:none;padding:0;max-width:400px;width:100%}
+    li{background:#fff;margin:5px 0;padding:10px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);text-align:center}
+    a.back{display:inline-block;margin-top:20px;padding:10px 20px;background:#4CAF50;color:white;border-radius:6px;text-decoration:none}
+    a.back:hover{background:#388E3C}
+  </style>
+</head>
+<body>
+  <h1>📜 Word List</h1>
+  <ul id="wordList"><li>Loading...</li></ul>
+  <a class="back" href="index.html">⬅ Back to Trainer</a>
+
+  <script>
+    fetch('wordslist.txt')
+      .then(r => r.text())
+      .then(t => {
+	  alert(r);
+        const words=t.split(/\r?\n/).filter(w=>w.trim()!=="");
+        const ul=document.getElementById('wordList');
+        ul.innerHTML="";
+        words.forEach(w=>{
+          const li=document.createElement('li');
+          li.textContent=w;
+          ul.appendChild(li);
+        });
+      })
+      .catch(()=>{
+        document.getElementById('wordList').innerHTML="<li>❌ Failed to load word list.</li>";
+      });
+  </script>
+</body>
+</html>
