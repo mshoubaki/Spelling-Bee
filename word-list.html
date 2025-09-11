@@ -19,12 +19,9 @@
   <a class="back" href="index.html">⬅ Back to Trainer</a>
 
   <script>
-	  alert("1");
     fetch('wordslist.txt')
-		 alert("2");
       .then(r => r.text())
       .then(t => {
-	  alert(r);
         const words=t.split(/\r?\n/).filter(w=>w.trim()!=="");
         const ul=document.getElementById('wordList');
         ul.innerHTML="";
@@ -40,4 +37,5 @@
   </script>
 </body>
 </html>
+
 
